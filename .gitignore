@@ -1,0 +1,4 @@
+node_modules/
+.DS_Store
+# machine-specific chromium path for dev/cdp.mjs
+dev/.chrome-env

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Moonling</title>
+  <meta name="theme-color" content="#2a2a6e">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true">
+    <div class="big-moon"></div>
+    <div class="twinkles" id="twinkles"></div>
+  </div>
+
+  <main class="device" id="device">
+    <div class="keyring" aria-hidden="true"></div>
+    <header class="device-head">
+      <div class="brand">moonling <span class="brand-star">✦</span></div>
+      <div class="head-btns">
+        <button class="mini" data-open="journal" title="Journal (J)" aria-label="Journal"></button>
+        <button class="mini" data-open="shop" title="Shop (S)" aria-label="Shop"></button>
+        <button class="mini" data-open="settings" title="Settings" aria-label="Settings"></button>
+      </div>
+    </header>
+
+    <section class="nameplate">
+      <div class="np-left">
+        <div class="pname" id="pname">…</div>
+        <div class="pmeta" id="pmeta"></div>
+      </div>
+      <div class="coins" id="coins" title="Moon coins — earn them in games"><span class="coin"></span><b id="coin-n">0</b></div>
+    </section>
+
+    <div class="screen">
+      <canvas id="cv" width="360" height="300"></canvas>
+      <div class="panel hidden" id="panel"></div>
+      <div class="toast" id="toast"></div>
+    </div>
+
+    <section class="meters" id="meters">
+      <div class="meter" data-stat="hunger"><i></i><div class="bar"><span></span></div></div>
+      <div class="meter" data-stat="happy"><i></i><div class="bar"><span></span></div></div>
+      <div class="meter" data-stat="energy"><i></i><div class="bar"><span></span></div></div>
+      <div class="meter" data-stat="hygiene"><i></i><div class="bar"><span></span></div></div>
+      <div class="meter" data-stat="health"><i></i><div class="bar"><span></span></div></div>
+    </section>
+
+    <nav class="controls">
+      <button class="act" data-act="feed" style="--c:#ffb86b;--d:#e88e3c"><span class="ic"></span><span class="lb">Feed</span></button>
+      <button class="act" data-act="play" style="--c:#7fd1ff;--d:#4aa6de"><span class="ic"></span><span class="lb">Play</span></button>
+      <button class="act" data-act="clean" style="--c:#8ee6c0;--d:#52c092"><span class="ic"></span><span class="lb">Clean</span></button>
+      <button class="act" data-act="lights" style="--c:#b6a3ff;--d:#8a72e8"><span class="ic"></span><span class="lb">Lights</span></button>
+      <button class="act" data-act="medicine" style="--c:#ff9fbd;--d:#e56d93"><span class="ic"></span><span class="lb">Meds</span></button>
+    </nav>
+    <div class="hint">tap your moonling to pet it ♡</div>
+  </main>
+
+  <div class="modal hidden" id="modal" role="dialog" aria-modal="true">
+    <div class="card" id="modal-card"></div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

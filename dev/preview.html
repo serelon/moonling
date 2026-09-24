@@ -1,0 +1,27 @@
+<!doctype html><meta charset="utf-8"><title>moonling art preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+<body style="margin:0;background:#f4eefc"><canvas id="c"></canvas>
+<script type="module">
+import { drawCreature, drawEgg, drawPoop, drawGrave, LOOKS } from '../js/creature.js';
+const c = document.getElementById('c'), dpr = devicePixelRatio || 1;
+const W = 1100, H = 900; c.width = W * dpr; c.height = H * dpr; c.style.width = W + 'px';
+const ctx = c.getContext('2d'); ctx.scale(dpr, dpr);
+const exprs = [['normal','smile'],['happy','grin'],['sad','frown'],['sick','wobbly'],['sleep','o'],['annoyed','flat'],['surprised','open'],['eat','chew-open'],['dead','flat']];
+const hats = ['none','bow','party','flower','beanie','crown','wizard'];
+function frame(ts) {
+  const t = ts / 1000;
+  ctx.clearRect(0,0,W,H);
+  ctx.font = '12px Fredoka'; ctx.fillStyle = '#555';
+  Object.keys(LOOKS).forEach((f, row) => {
+    ctx.fillText(f, 8, 60 + row * 90);
+    exprs.forEach(([expr, mouth], col) => {
+      drawCreature(ctx, f, { x: 110 + col * 100, y: 75 + row * 90, t, expr, mouth, facing: 1, lookX: Math.sin(t) , hat: hats[(row + col) % hats.length], tears: expr==='sad', walk: col===0 ? t*8 : 0, wave: col===1 });
+    });
+  });
+  drawEgg(ctx, 1030, 120, t, 0.9, Math.sin(t*6)*0.1);
+  drawPoop(ctx, 1030, 220, t);
+  drawGrave(ctx, 1030, 330, 'Nori');
+  requestAnimationFrame(frame);
+}
+document.fonts.ready.then(() => requestAnimationFrame(frame));
+</script>
